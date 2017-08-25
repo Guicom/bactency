@@ -5,7 +5,7 @@
   "css": {
     "file" : "style.scss",
     "src": [
-      "assets/scss/**/*.scss"
+      "CSSSRC"
     ],
     "dest": "assets/css",
     "includePaths": [
