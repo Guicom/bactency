@@ -13,7 +13,7 @@ cd /var/www/html/web
 read -e -i "$themename" -p "What is the name of the subtheme ? " input
 themename="${input:-$themename}"
 themepath=themes/custom/${themename}
-
+mkdir themes/custom
 
 displayOperation "Copy bootstrap SASS starterkits"
 cp -rf themes/contrib/bootstrap/starterkits/sass ${themepath}
