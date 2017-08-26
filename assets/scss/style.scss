@@ -5,17 +5,15 @@
  * NO CUSTOM CODE HERE !!!
  */
 
+//Include own bootstrap variables
+//This file come from bootstrap
+//bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
+@import "bootstrap-overrides";
+
 // Import Utility
 @import "partials/utility/fonts";
 @import "partials/utility/variables";
 @import "partials/utility/mixins";
 
-// Import Bootstrap
-@import "bootstrap-sass/bootstrap";
-
-// Import Bootstrap checkbox
-@import "bootstrap-sass-checkbox/bootstrap-checkbox";
-
 // Import Pages
-@import "partials/pages/wysiwyg";
 @import "partials/pages/global";
