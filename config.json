@@ -1,34 +1,34 @@
 {
   "name": "THEMENAME",
   "description": "A theme based on Bootstrap.",
-  "bowerDir": "./bower_components",
+  "bowerDir": "bower_components",
   "css": {
     "file" : "style.scss",
     "src": [
       "CSSSRC"
     ],
-    "dest": "assets/css",
+    "dest": "CSSDEST",
     "includePaths": [
-      "./bower_components/bootstrap-sass/assets/stylesheets",
-      "./bower_components/font-awesome/scss"
+      "bower_components/bootstrap-sass/assets/stylesheets",
+      "bower_components/font-awesome/scss"
     ]
   },
   "js": {
     "file" : "script.js",
     "src": [
-      "assets/js/**/*.js"
+      "JSSRC"
     ]
   },
   "images": {
     "src": [
-      "assets/images/**/*"
+      "IMGSRC"
     ],
-    "dest": "assets/images/"
+    "dest": "IMGDEST"
   },
   "fonts": {
     "src": [
-      "./bower_components/font-awesome/fonts/**.*"
+      "bower_components/font-awesome/fonts/**.*"
     ],
-    "dest": "./assets/fonts/"
+    "dest": "FONTDEST"
   }
 }
