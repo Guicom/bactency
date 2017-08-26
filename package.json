@@ -7,7 +7,7 @@
   "main": "gulpfile.js",
   "private": true,
   "scripts": {
-    "setup": "npm install --no-bin-links && bower install --allow-root",
+    "setup": "npm install --no-bin-links && bower install",
     "postinstall": "find node_modules/ -name '*.info' -type f -delete"
   },
   "devDependencies": {

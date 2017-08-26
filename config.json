@@ -9,7 +9,7 @@
     ],
     "dest": "CSSDEST",
     "includePaths": [
-      "bower_components/bootstrap-sass/assets/stylesheets",
+      "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss",
       "bower_components/font-awesome/scss"
     ]
   },

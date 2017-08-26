@@ -1,18 +1,19 @@
 /**
- * WYSIWYG stylesheet
+ * Main site stylesheet
  *
- * Used in WYSIWYG editor AND on the website.
- * Should contain only styles for the WYSIWYG templates.
+ * This stylesheet is used only to import .scss files.
+ * NO CUSTOM CODE HERE !!!
  */
+
+//Include own bootstrap variables
+//This file come from bootstrap
+//bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
+@import "bootstrap-overrides";
 
 // Import Utility
 @import "partials/utility/fonts";
 @import "partials/utility/variables";
 @import "partials/utility/mixins";
 
-// Import Bootstrap
-@import "bootstrap-sass/bootstrap";
-
 // Import Pages
 @import "partials/pages/wysiwyg";
-@import "partials/pages/global";

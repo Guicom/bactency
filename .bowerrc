@@ -1,0 +1,12 @@
+{
+  "directory": "THEMEPATH/assets/vendors/",
+  "allow_root": true,
+  "ignoredDependencies": [
+    "bootstrap",
+    "paper-icon-button",
+    "iron-icons",
+    "polymer",
+    "jquery",
+    "tinymce-dist"
+  ]
+}
