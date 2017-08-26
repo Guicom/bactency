@@ -70,7 +70,7 @@ displayOperation "Removing scss drupal bootstrap folder"
 displayOperation "Installing gulp & bower"
     npm run setup
 
-gulp sass
+gulp css
 
 displayOperation "Gulp installed & compiled"
 displayOperation "Activate new theme"
