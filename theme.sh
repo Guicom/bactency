@@ -12,47 +12,68 @@ cd /var/www/html/web
 
 read -e -i "$themename" -p "What is the name of the subtheme ? " input
 themename="${input:-$themename}"
+themepath=themes/custom/${themename}
 
-echo "Copy bootstrap SASS starterkits"
-cp -rf themes/contrib/bootstrap/starterkits/sass themes/custom/${themename}
 
-cd themes/custom/${themename}
+displayOperation "Copy bootstrap SASS starterkits"
+cp -rf themes/contrib/bootstrap/starterkits/sass ${themepath}
 
-displayOperation "Downloading bootstrap framework"
-wget "https://github.com/twbs/bootstrap-sass/archive/master.zip"
-            unzip "master.zip"
-            rm "master.zip"
-            mv bootstrap-sass-master bootstrap
+#cd themes/custom/${themename}
+
+displayOperation "Moving bactency files to new theme"
+    mv bactency-master/assets/ ${themepath}/assets
+    mv bactency-master/bower.json bower.json
+    mv bactency-master/config.json config.json
+    mv bactency-master/gulpfile.js gulpfile.js
+    mv bactency-master/package.json package.json
+    mv bactency-master/package-lock.json package-lock.json
+    mv bactency-master/README.md ${themepath}/README.md
+displayOperation "bactency  files moved"
+
 
 displayOperation "Rename files"
-    mv THEMENAME.starterkit.yml ${themename}.info.yml
+    mv ${themepath}/THEMENAME.starterkit.yml ${themepath}/${themename}.info.yml
     displaySuccess ${themename}".info.yml"
-    mv THEMENAME.libraries.yml ${themename}.libraries.yml
+    mv ${themepath}/THEMENAME.libraries.yml ${themepath}/${themename}.libraries.yml
     displaySuccess ${themename}".libraries.yml"
-    mv THEMENAME.theme ${themename}.theme
-    sed -ie "s/THEMETITLE/${themename}/g" ${themename}.info.yml
+    mv ${themepath}/THEMENAME.theme ${themepath}/${themename}.theme
+    mv bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss ${themepath}/assets/scss/_bootstrap-overrides.scss
+
+displayOperation "Replace token"
+    sed -i "s/THEMETITLE/${themename}/g" ${themepath}/${themename}.info.yml
+    sed -i "s/THEMENAME/${themename}/g" ${themepath}/${themename}.info.yml
     displaySuccess ${themename}".theme"
-    rm ${themename}.info.ymle
+    csssrc=${themepath}/assets/scss/**/*.scss
+    sed -i "s/CSSSRC/${csssrc//\//\\/}/g" config.json
+    cssdest=${themepath}/assets/css
+    sed -i "s/CSSDEST/${cssdest//\//\\/}/g" config.json
+    jssrc=${themepath}/assets/js/**/*.js
+    sed -i "s/JSSRC/${jssrc//\//\\/}/g" config.json
+    imgsrc=${themepath}//assets/images/**/*
+    sed -i "s/IMGSRC/${imgsrc//\//\\/}/g" config.json
+    imgdest=${themepath}/assets/images/
+    sed -i "s/IMGDEST/${imgdest//\//\\/}/g" config.json
+    fontdest=${themepath}/assets/fonts/
+    sed -i "s/FONTDEST/${fontdest//\//\\/}/g" config.json
+    sed -i "s/THENAME/${themename}/g" config.json
+    sed -i "s/THENAME/${themename}/g" package.json
+    sed -i "s/THENAME/${themename}/g" package-lock.json
 
-displayOperation "Moving files"
-    mv scss/ sass
-    mkidr bootstrap
-    mv component bootstrap/component
-    mv jquery-ui bootstrap/jquery-ui
-displaySuccess "Boostrap sass files moved"
+    cd ${themepath}
+    grep --null -lr "THEMENAME" | xargs --null sed -i "s/THEMENAME/${themename}/g"
+    cd /var/www/html/web
+    rm -rf bactency-master
 
-    cp ../bactency/gulpfile.js gulpfile.js
-    cp ../bactency/package.json package.json
-    cp ../bactency/readme.md readme.md
-displaySuccess "Bactency files moved"
+displayOperation "Removing scss drupal bootstrap folder"
+    rm -rf ${themepath}/scss
 
-displayOperation "Installing gulp"
+displayOperation "Installing gulp & bower"
     npm run setup
 
 gulp sass
 
-displaySuccess "Gulp installed & compiled"
+displayOperation "Gulp installed & compiled"
 displayOperation "Activate new theme"
-    cd ../../
+    cd ../
     drush drush config-set system.theme default ${themename} -y
     drush cr
