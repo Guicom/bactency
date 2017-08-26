@@ -1,0 +1,27 @@
+/**
+ * All custom variables should reside here.
+ * To customize bootstrap variables, see _variables_boostrap.scss file.
+ */
+
+// COLOR VARIABLES
+// ---------------
+$white: #FFFFFF;
+$black: #000000;
+$gray: #333333;
+
+// FONT VARIABLES
+// --------------
+$courier: 'Courier New', 'DejaVu Sans Mono', monospace, sans-serif;
+$glyphicons: 'Glyphicons Halflings';
+
+// FONT WEIGHT
+// -----------
+$font-weight-base: 400;
+
+$font-weight-bold:        700;
+$font-weight-normal:      $font-weight-base;
+$font-weight-slim:        200;
+
+// BOOTSTRAP OVERRIDES
+// -------------------
+@import "variables_bootstrap";

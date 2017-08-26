@@ -1,0 +1,14 @@
+/**
+ * Site printable version stylesheet
+ *
+ * This stylesheet is used only to import .scss files.
+ * NO CUSTOM CODE HERE !!!
+ */
+
+// Import Utility
+@import "partials/utility/fonts";
+@import "partials/utility/variables";
+@import "partials/utility/mixins";
+
+// Import Pages
+@import "partials/pages/print/global";

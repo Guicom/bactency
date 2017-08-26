@@ -1,0 +1,97 @@
+/**
+ * Custom mixins.
+ */
+
+/**
+custom function to manage font size conversion from px to em
+**/
+@function em($px, $base: $font-size-base) {
+  @return ($px / $base) * 1em;
+}
+
+/**
+Simple vertical align mixin
+**/
+@mixin vertical-align($height) {
+  line-height: $height;
+  height: $height;
+  vertical-align: middle;
+}
+
+/**
+Advanced vertical align mixin
+if this doesn't work, change position to absolute. In this case you must have a parent with relative position
+**/
+@mixin vertical-align-trans {
+  top: 50%;
+  position: relative;
+  @include translateY(-50%);
+}
+
+/**
+Advanced horyzontal align mixin
+if this doesn't work, change position to absolute. In this case you must have a parent with relative position
+**/
+@mixin horyzontal-align-trans {
+  left: 50%;
+  position: relative;
+  @include translateX(-50%);
+}
+
+/**
+Advanced align all mixin
+if this doesn't work, change position to absolute. In this case you must have a parent with relative position
+**/
+@mixin all-align-trans {
+  top: 50%;
+  left: 50%;
+  position: relative;
+  @include translate(-50%, -50%);
+}
+
+/**
+Use this placeholder to make an element take the full parent size
+Parent element must av
+**/
+@mixin parent-overlap {
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  text-indent: -9999px;
+  z-index: 3;
+}
+
+
+/* Grid Mixins */
+
+/**
+Custom mixin to emulate the .container class
+**/
+@mixin make-container {
+  @include container-fixed;
+
+  @media (min-width: $screen-sm-min) {
+    width: $container-sm;
+  }
+  @media (min-width: $screen-md-min) {
+    width: $container-md;
+  }
+  @media (min-width: $screen-lg-min) {
+    width: $container-lg;
+  }
+}
+
+@mixin icons_glyphicons($icon) {
+  font-family: $glyphicons;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+
+  @if $icon == 'map-marker' { content: "\e062"; }
+  @if $icon == 'carte-id' { content: "\e353"; }
+}

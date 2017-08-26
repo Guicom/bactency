@@ -1,0 +1,18 @@
+/**
+ * WYSIWYG stylesheet
+ *
+ * Used in WYSIWYG editor AND on the website.
+ * Should contain only styles for the WYSIWYG templates.
+ */
+
+// Import Utility
+@import "partials/utility/fonts";
+@import "partials/utility/variables";
+@import "partials/utility/mixins";
+
+// Import Bootstrap
+@import "bootstrap-sass/bootstrap";
+
+// Import Pages
+@import "partials/pages/wysiwyg";
+@import "partials/pages/global";

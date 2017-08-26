@@ -1,0 +1,21 @@
+/**
+ * Main site stylesheet
+ *
+ * This stylesheet is used only to import .scss files.
+ * NO CUSTOM CODE HERE !!!
+ */
+
+// Import Utility
+@import "partials/utility/fonts";
+@import "partials/utility/variables";
+@import "partials/utility/mixins";
+
+// Import Bootstrap
+@import "bootstrap-sass/bootstrap";
+
+// Import Bootstrap checkbox
+@import "bootstrap-sass-checkbox/bootstrap-checkbox";
+
+// Import Pages
+@import "partials/pages/wysiwyg";
+@import "partials/pages/global";
