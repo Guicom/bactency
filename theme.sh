@@ -33,11 +33,10 @@ displayOperation "bactency  files moved"
 
 displayOperation "Rename files"
     mv ${themepath}/THEMENAME.starterkit.yml ${themepath}/${themename}.info.yml
-    displaySuccess ${themename}".info.yml"
     mv ${themepath}/THEMENAME.libraries.yml ${themepath}/${themename}.libraries.yml
-    displaySuccess ${themename}".libraries.yml"
     mv ${themepath}/THEMENAME.theme ${themepath}/${themename}.theme
-    mv bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss ${themepath}/assets/scss/_bootstrap-overrides.scss
+    mv ${themepath}/config/install/THEMENAME.settings.yml ${themepath}/config/install/{themename}.settings.yml
+    mv ${themepath}/config/install/THEMENAME.schema.yml ${themepath}/config/install/{themename}.schema.yml
 
 displayOperation "Replace token"
     sed -i "s/THEMETITLE/${themename}/g" ${themepath}/${themename}.info.yml
@@ -61,6 +60,7 @@ displayOperation "Replace token"
 
     cd ${themepath}
     grep --null -lr "THEMENAME" | xargs --null sed -i "s/THEMENAME/${themename}/g"
+    grep --null -lr "THEMETITLE" | xargs --null sed -i "s/THEMETITLE/${themename}/g"
     cd /var/www/html/web
     rm -rf bactency-master
 
@@ -69,11 +69,14 @@ displayOperation "Removing scss drupal bootstrap folder"
 
 displayOperation "Installing gulp & bower"
     npm run setup
+    mv bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss ${themepath}/assets/scss/_bootstrap-overrides.scss
 
 gulp css
 
 displayOperation "Gulp installed & compiled"
 displayOperation "Activate new theme"
     cd ../
-    drush drush config-set system.theme default ${themename} -y
+    drush en -y bootstrap
+    drush en -y ${themename}
+    drush config-set system.theme default ${themename} -y
     drush cr
