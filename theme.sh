@@ -29,6 +29,7 @@ displayOperation "Moving bactency files to new theme"
     mv bactency-master/package-lock.json package-lock.json
     mv bactency-master/README.md ${themepath}/README.md
     mv bactency-master/gulp.sh gulp.sh
+    mv bactency-master/.bowerrc .bowerrc
 
 displayOperation "Rename files"
     mv ${themepath}/THEMENAME.starterkit.yml ${themepath}/${themename}.info.yml
@@ -59,7 +60,7 @@ displayOperation "Replace token"
     sed -i "s/THENAME/${themename}/g" config.json
     sed -i "s/THENAME/${themename}/g" package.json
     sed -i "s/THENAME/${themename}/g" package-lock.json
-    sed -i "s/THEMEPATH/${themepath//\//\\/}/g" .bowercc
+    sed -i "s/THEMEPATH/${themepath//\//\\/}/g" .bowerrc
 
     cd ${themepath}
     grep --null -lr "THEMENAME" | xargs --null sed -i "s/THEMENAME/${themename}/g"
