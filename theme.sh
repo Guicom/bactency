@@ -73,7 +73,7 @@ displayOperation "Removing scss drupal bootstrap folder"
 
 displayOperation "Installing gulp & bower"
     npm run setup
-    mv bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss ${themepath}/assets/scss/_bootstrap-overrides.scss
+    mv ${themepath}/assets/vendors/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss ${themepath}/assets/scss/_bootstrap-overrides.scss
 
 displayOperation "Gulp installed & compiled"
 displayOperation "Activate new theme"

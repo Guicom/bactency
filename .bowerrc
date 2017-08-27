@@ -1,5 +1,5 @@
 {
-  "directory": "THEMEPATH/assets/vendors/",
+  "directory": "THEMEPATH/assets/vendors",
   "allow_root": true,
   "ignoredDependencies": [
     "bootstrap",
