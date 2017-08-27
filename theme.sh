@@ -40,6 +40,9 @@ displayOperation "Rename files"
     replace=bootstrap/assets
     bootstrapbower=assets/vendors/bootstrap-sass/assets
     sed -i "s/${replace//\//\\/}/${bootstrapbower//\//\\/}/g" ${themepath}/${themename}.libraries.yml
+    cssreplace=css/style.css
+    cssfolder=assets/css/style.css
+    sed -i "s/${cssreplace//\//\\/}/${cssfolder//\//\\/}/g" ${themepath}/${themename}.libraries.yml
 
 displayOperation "Replace token"
     sed -i "s/THEMETITLE/${themename}/g" ${themepath}/${themename}.info.yml
