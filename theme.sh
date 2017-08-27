@@ -57,9 +57,9 @@ displayOperation "Replace token"
     sed -i "s/IMGDEST/${imgdest//\//\\/}/g" config.json
     fontdest=${themepath}/assets/fonts/
     sed -i "s/FONTDEST/${fontdest//\//\\/}/g" config.json
-    sed -i "s/THENAME/${themename}/g" config.json
-    sed -i "s/THENAME/${themename}/g" package.json
-    sed -i "s/THENAME/${themename}/g" package-lock.json
+    sed -i "s/THEMENAME/${themename}/g" config.json
+    sed -i "s/THEMENAME/${themename}/g" package.json
+    sed -i "s/THEMENAME/${themename}/g" package-lock.json
     sed -i "s/THEMEPATH/${themepath//\//\\/}/g" .bowerrc
 
     cd ${themepath}

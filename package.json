@@ -7,7 +7,7 @@
   "main": "gulpfile.js",
   "private": true,
   "scripts": {
-    "setup": "bash gulp.sh && bower install",
+    "setup": "bash gulp.sh",
     "postinstall": "find node_modules/ -name '*.info' -type f -delete"
   },
   "devDependencies": {
