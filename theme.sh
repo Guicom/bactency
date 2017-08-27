@@ -36,7 +36,7 @@ displayOperation "Rename files"
     mv ${themepath}/THEMENAME.libraries.yml ${themepath}/${themename}.libraries.yml
     mv ${themepath}/THEMENAME.theme ${themepath}/${themename}.theme
     mv ${themepath}/config/install/THEMENAME.settings.yml ${themepath}/config/install/{themename}.settings.yml
-    mv ${themepath}/config/install/THEMENAME.schema.yml ${themepath}/config/install/{themename}.schema.yml
+    mv ${themepath}/config/schema/THEMENAME.schema.yml ${themepath}/config/schema/{themename}.schema.yml
     replace=bootstrap/assets
     bootstrapbower=vendors/bootstrap-sass/assets
     sed -i "s/${replace//\//\\/}/${bootstrapbower//\//\\/}/g" ${themepath}/${themename}.libraries.yml
