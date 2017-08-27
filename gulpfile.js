@@ -29,8 +29,7 @@ gulp.task('css', function() {
     .pipe(sourcemaps.init())
     .pipe(sass({
       style: 'compressed',
-      errLogToConsole: true,
-      includePaths: config.css.includePaths
+      errLogToConsole: true
     }))
     .pipe(autoprefix('last 2 versions', '> 1%', 'ie 9', 'ie 10'))
     .pipe(sourcemaps.write('./'))
@@ -50,11 +49,6 @@ gulp.task('images', function () {
     .pipe(gulp.dest(config.images.dest));
 });
 
-// Fonts.
-gulp.task('fonts', function() {
-  return gulp.src(config.fonts.src)
-    .pipe(gulp.dest(config.fonts.dest));
-});
 
 // Watch task.
 gulp.task('watch', function() {
@@ -63,7 +57,7 @@ gulp.task('watch', function() {
 });
 
 // Static Server + Watch
-gulp.task('serve', ['css', 'fonts', 'watch']);
+gulp.task('serve', ['css', 'watch']);
 
 // Run drush to clear the theme registry.
 gulp.task('drush', shell.task([
