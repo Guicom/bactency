@@ -28,6 +28,7 @@ displayOperation "Moving bactency files to new theme"
     mv bactency-master/package.json package.json
     mv bactency-master/package-lock.json package-lock.json
     mv bactency-master/README.md ${themepath}/README.md
+    mv bactency-master/gulp.sh gulp.sh
 
 displayOperation "Rename files"
     mv ${themepath}/THEMENAME.starterkit.yml ${themepath}/${themename}.info.yml
