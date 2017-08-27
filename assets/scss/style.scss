@@ -10,6 +10,10 @@
 //bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss
 @import "bootstrap-overrides";
 
+//Import bootstrap
+@import "../vendors/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "../vendors/font-awesome/scss/font-awesome.scss";
+
 // Import Utility
 @import "partials/utility/fonts";
 @import "partials/utility/variables";

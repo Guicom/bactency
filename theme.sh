@@ -35,10 +35,10 @@ displayOperation "Rename files"
     mv ${themepath}/THEMENAME.starterkit.yml ${themepath}/${themename}.info.yml
     mv ${themepath}/THEMENAME.libraries.yml ${themepath}/${themename}.libraries.yml
     mv ${themepath}/THEMENAME.theme ${themepath}/${themename}.theme
-    mv ${themepath}/config/install/THEMENAME.settings.yml ${themepath}/config/install/{themename}.settings.yml
-    mv ${themepath}/config/schema/THEMENAME.schema.yml ${themepath}/config/schema/{themename}.schema.yml
+    mv ${themepath}/config/install/THEMENAME.settings.yml ${themepath}/config/install/${themename}.settings.yml
+    mv ${themepath}/config/schema/THEMENAME.schema.yml ${themepath}/config/schema/${themename}.schema.yml
     replace=bootstrap/assets
-    bootstrapbower=vendors/bootstrap-sass/assets
+    bootstrapbower=assets/vendors/bootstrap-sass/assets
     sed -i "s/${replace//\//\\/}/${bootstrapbower//\//\\/}/g" ${themepath}/${themename}.libraries.yml
 
 displayOperation "Replace token"
@@ -74,7 +74,7 @@ displayOperation "Removing scss drupal bootstrap folder"
 displayOperation "Installing gulp & bower"
     npm run setup
     bower install
-    mv ${themepath}/assets/vendors/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss ${themepath}/assets/scss/_bootstrap-overrides.scss
+    cp ${themepath}/assets/vendors/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss ${themepath}/assets/scss/_bootstrap-overrides.scss
 
 displayOperation "Gulp installed & compiled"
 displayOperation "Activate new theme"
