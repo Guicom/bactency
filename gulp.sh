@@ -12,5 +12,3 @@ npm install gulp-sourcemaps --no-bin-links
 npm install gulp-scss-lint --no-bin-links
 npm install jshint --no-bin-links
 npm install gulp-jshint --no-bin-links
-
-bower install
