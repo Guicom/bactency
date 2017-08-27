@@ -28,8 +28,6 @@ displayOperation "Moving bactency files to new theme"
     mv bactency-master/package.json package.json
     mv bactency-master/package-lock.json package-lock.json
     mv bactency-master/README.md ${themepath}/README.md
-displayOperation "bactency  files moved"
-
 
 displayOperation "Rename files"
     mv ${themepath}/THEMENAME.starterkit.yml ${themepath}/${themename}.info.yml
@@ -37,6 +35,9 @@ displayOperation "Rename files"
     mv ${themepath}/THEMENAME.theme ${themepath}/${themename}.theme
     mv ${themepath}/config/install/THEMENAME.settings.yml ${themepath}/config/install/{themename}.settings.yml
     mv ${themepath}/config/install/THEMENAME.schema.yml ${themepath}/config/install/{themename}.schema.yml
+    replace=bootstrap/assets
+    bootstrapbower=vendors/bootstrap-sass/assets
+    sed -i "s/${replace//\//\\/}/${bootstrapbower//\//\\/}/g" ${themepath}/${themename}.libraries.yml
 
 displayOperation "Replace token"
     sed -i "s/THEMETITLE/${themename}/g" ${themepath}/${themename}.info.yml
@@ -57,6 +58,7 @@ displayOperation "Replace token"
     sed -i "s/THENAME/${themename}/g" config.json
     sed -i "s/THENAME/${themename}/g" package.json
     sed -i "s/THENAME/${themename}/g" package-lock.json
+    sed -i "s/THEMEPATH/${themepath//\//\\/}/g" .bowercc
 
     cd ${themepath}
     grep --null -lr "THEMENAME" | xargs --null sed -i "s/THEMENAME/${themename}/g"
@@ -71,12 +73,10 @@ displayOperation "Installing gulp & bower"
     npm run setup
     mv bower_components/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss ${themepath}/assets/scss/_bootstrap-overrides.scss
 
-gulp css
-
 displayOperation "Gulp installed & compiled"
 displayOperation "Activate new theme"
-    cd ../
     drush en -y bootstrap
     drush en -y ${themename}
     drush config-set system.theme default ${themename} -y
     drush cr
+    gulp css
